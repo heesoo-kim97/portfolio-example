@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My 3D Portfolio</title>
+  <style>
+    /* CSS styling for the 3D portfolio */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      perspective: 1000px;
+      perspective-origin: center;
+    }
+
+    header {
+      background-color: #333;
+      padding: 20px;
+      color: white;
+      text-align: center;
+    }
+
+    h1 {
+      margin: 0;
+    }
+
+    main {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 0 20px;
+      transform-style: preserve-3d;
+    }
+
+    .project {
+      position: relative;
+      width: 100%;
+      height: 400px;
+      transform-style: preserve-3d;
+      transform: translateZ(0);
+      transition: transform 0.5s ease-out;
+    }
+
+    .project:hover {
+      transform: rotateY(20deg);
+    }
+
+    .project .project-content {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #fff;
+      padding: 20px;
+      box-sizing: border-box;
+      border: 1px solid #ccc;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+      transform: translateZ(100px);
+    }
+
+    .project img {
+      max-width: 100%;
+      height: auto;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>My 3D Portfolio</h1>
+  </header>
+
+  <main>
+    <div class="project">
+      <div class="project-content">
+        <h3>Project 1</h3>
+        <p>This is a description of project 1. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <img src="project1.jpg" alt="Project 1">
+      </div>
+    </div>
+
+    <div class="project">
+      <div class="project-content">
+        <h3>Project 2</h3>
+        <p>This is a description of project 2. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <img src="project2.jpg" alt="Project 2">
+      </div>
+    </div>
+  </main>
+</body>
+</html>
+
+<!--
+    In the above code the '.project' elements are transformed in 3D space using the 'transform' property.
+    On hover, the projects rotate around the Y-axis to create a 3D effect.
+
+    You can replace the placeholder content with your own projects, descriptions, and images. 
+    Feel free to customize the styles or add more projects as per your requirements. 
+-->

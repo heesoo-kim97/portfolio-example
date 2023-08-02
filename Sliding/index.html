@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Sliding Portfolio</title>
+  <style>
+    /* CSS styling for the sliding portfolio */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #333;
+      padding: 20px;
+      color: white;
+      text-align: center;
+    }
+
+    h1 {
+      margin: 0;
+    }
+
+    main {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 0 20px;
+      overflow-x: hidden;
+    }
+
+    .sections-container {
+      display: flex;
+      width: 300%;
+      transition: transform 0.5s ease-in-out;
+    }
+
+    .section {
+      flex: 1;
+      width: 100%;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+    .section:nth-child(1) {
+      background-color: #ff9999;
+    }
+
+    .section:nth-child(2) {
+      background-color: #99ccff;
+    }
+
+    .section:nth-child(3) {
+      background-color: #99ff99;
+    }
+
+    .section h2 {
+      color: white;
+      margin-top: 0;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Sliding Portfolio</h1>
+  </header>
+
+  <main>
+    <div class="sections-container">
+      <div class="section">
+        <h2>Section 1</h2>
+        <p>This is the first section of the portfolio.</p>
+      </div>
+      <div class="section">
+        <h2>Section 2</h2>
+        <p>This is the second section of the portfolio.</p>
+      </div>
+      <div class="section">
+        <h2>Section 3</h2>
+        <p>This is the third section of the portfolio.</p>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    // JavaScript code for sliding effect
+    const sectionsContainer = document.querySelector('.sections-container');
+    const sections = document.querySelectorAll('.section');
+    const sectionWidth = sections[0].offsetWidth;
+
+    let currentSection = 0;
+
+    function slideToSection(index) {
+      if (index < 0 || index >= sections.length) return;
+
+      currentSection = index;
+      const translateX = -sectionWidth * currentSection;
+      sectionsContainer.style.transform = `translateX(${translateX}px)`;
+    }
+
+    // Slide to next section
+    function slideNext() {
+      slideToSection(currentSection + 1);
+    }
+
+    // Slide to previous section
+    function slidePrevious() {
+      slideToSection(currentSection - 1);
+    }
+
+    // Add event listeners for navigation (e.g., arrow keys)
+    document.addEventListener('keydown', function(event) {
+      if (event.key === 'ArrowRight') {
+        slideNext();
+      } else if (event.key === 'ArrowLeft') {
+        slidePrevious();
+      }
+    });
+  </script>
+</body>
+</html>
+
+<!--
+    In the above code, the different sections of the portfolio are arranged inside a container element
+    ('sections-container'). The container has a fixed width of 300% to accommodate all the sections side by side.
+    The sliding effect is achieved by changing the 'transform' property of the container usin JavaScript.
+
+    You can customize the number of sections, their content, and the styling according to your needs. 
+    Additionally, the code includes event listeners for arrow key navigation('ArrowRight' and 'ArrowLeft')
+    to slide to the next or previous section. 
+-->

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Animated Portfolio</title>
+  <style>
+    /* CSS styling for the animated portfolio */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #333;
+      padding: 20px;
+      color: white;
+      text-align: center;
+    }
+
+    h1 {
+      margin: 0;
+    }
+
+    main {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 0 20px;
+    }
+
+    h2 {
+      color: #333;
+    }
+
+    p {
+      line-height: 1.5;
+    }
+
+    .project {
+      margin-bottom: 30px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+    }
+
+    .project.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .project h3 {
+      color: #333;
+      margin-top: 0;
+    }
+
+    .project p {
+      margin-bottom: 10px;
+    }
+
+    .project img {
+      max-width: 100%;
+      height: auto;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>My Animated Portfolio</h1>
+  </header>
+
+  <main>
+    <h2>About Me</h2>
+    <p>Hello! I am a web developer with a passion for creating amazing websites. I have experience in HTML, CSS, and JavaScript. Feel free to explore my portfolio and get in touch with me for any project collaborations.</p>
+
+    <h2>Projects</h2>
+    <div class="project">
+      <h3>Project 1</h3>
+      <p>This is a description of project 1. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      <img src="project1.jpg" alt="Project 1">
+    </div>
+
+    <div class="project">
+      <h3>Project 2</h3>
+      <p>This is a description of project 2. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      <img src="project2.jpg" alt="Project 2">
+    </div>
+  </main>
+
+  <script>
+    // JavaScript code for animating the projects
+    const projects = document.querySelectorAll('.project');
+
+    function animateProjects() {
+      projects.forEach((project, index) => {
+        if (isElementInViewport(project)) {
+          project.classList.add('visible');
+        }
+      });
+    }
+
+    function isElementInViewport(element) {
+      const rect = element.getBoundingClientRect();
+      return (
+        rect.top >= 0 &&
+        rect.left >= 0 &&
+        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+        rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+      );
+    }
+
+    // Initial animation on page load
+    animateProjects();
+
+    // Re-animate projects on window scroll
+    window.addEventListener('scroll', animateProjects);
+  </script>
+</body>
+</html>
+
+<!--
+    In the above code, the '.project' elements are intially hidden with opacity fand transformed properties.
+    As the user scrolls down the page and the projects come into the viewport, they will animae into 
+    view by adding the 'visible' class. which updates the opacity and transform properties. 
+
+    You can replace the placeholder content with your own projects, descriptions, and images.
+-->

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Portfolio</title>
+  <style>
+    /* CSS styling for the portfolio with tabs and headers */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #333;
+      padding: 20px;
+      color: white;
+      text-align: center;
+    }
+
+    h1 {
+      margin: 0;
+    }
+
+    main {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 0 20px;
+    }
+
+    .tab-buttons {
+      display: flex;
+      margin-bottom: 20px;
+    }
+
+    .tab-button {
+      padding: 10px 20px;
+      background-color: #333;
+      color: white;
+      text-decoration: none;
+      border: none;
+      border-radius: 5px;
+      margin-right: 10px;
+      cursor: pointer;
+    }
+
+    .tab-button.active {
+      background-color: blue;
+    }
+
+    .tab-content {
+      display: none;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>My Portfolio</h1>
+  </header>
+
+  <main>
+    <div class="tab-buttons">
+      <button class="tab-button active" data-tab="projects">Projects</button>
+      <button class="tab-button" data-tab="about">About</button>
+      <button class="tab-button" data-tab="contact">Contact</button>
+    </div>
+
+    <div class="tab-content active" data-tab="projects">
+      <h2>Projects</h2>
+      <p>This is the projects tab. Here you can showcase your projects and provide more information about them.</p>
+    </div>
+
+    <div class="tab-content" data-tab="about">
+      <h2>About</h2>
+      <p>This is the about tab. Here you can share information about yourself, your skills, and your background.</p>
+    </div>
+
+    <div class="tab-content" data-tab="contact">
+      <h2>Contact</h2>
+      <p>This is the contact tab. Here you can provide contact information and a form for visitors to get in touch with you.</p>
+    </div>
+  </main>
+
+  <script>
+    // JavaScript code for handling tab navigation
+    const tabButtons = document.querySelectorAll('.tab-button');
+    const tabContents = document.querySelectorAll('.tab-content');
+
+    function showTabContent(tab) {
+      tabContents.forEach(content => {
+        if (content.getAttribute('data-tab') === tab) {
+          content.classList.add('active');
+        } else {
+          content.classList.remove('active');
+        }
+      });
+    }
+
+    tabButtons.forEach(button => {
+      button.addEventListener('click', function() {
+        const activeTab = button.getAttribute('data-tab');
+        showTabContent(activeTab);
+
+        tabButtons.forEach(btn => {
+          if (btn === button) {
+            btn.classList.add('active');
+          } else {
+            btn.classList.remove('active');
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
+
+<!-- 
+    In the above code, you can see the implementation of different tabs and headers for a portfolio
+    website. The tab buttons are created using '<button>' elements with 'data-tab' attributes representing
+        the corresponding conent tabs. The content for each tab is defined using '<div>' elements with data
+-->
